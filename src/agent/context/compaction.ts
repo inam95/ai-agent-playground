@@ -1,5 +1,5 @@
-import { generateText, type ModelMessage } from "ai";
 import { openai } from "@ai-sdk/openai";
+import { generateText, type ModelMessage } from "ai";
 import { extractMessageText } from "./tokenEstimator.ts";
 
 const SUMMARIZATION_PROMPT = `
@@ -9,13 +9,13 @@ const SUMMARIZATION_PROMPT = `
  * Format messages array as readable text for summarization
  */
 function messagesToText(messages: ModelMessage[]): string {
-  return messages
-    .map((msg) => {
-      const role = msg.role.toUpperCase();
-      const content = extractMessageText(msg);
-      return `[${role}]: ${content}`;
-    })
-    .join("\n\n");
+	return messages
+		.map((msg) => {
+			const role = msg.role.toUpperCase();
+			const content = extractMessageText(msg);
+			return `[${role}]: ${content}`;
+		})
+		.join("\n\n");
 }
 
 /**
@@ -29,9 +29,9 @@ function messagesToText(messages: ModelMessage[]): string {
  * The system prompt should be prepended by the caller.
  */
 export async function compactConversation(
-  messages: ModelMessage[],
-  model: string = "gpt-5-mini",
+	messages: ModelMessage[],
+	model: string = "gpt-5-mini",
 ): Promise<any> {
-  // Filter out system messages - they're handled separately
-  //
+	// Filter out system messages - they're handled separately
+	//
 }
